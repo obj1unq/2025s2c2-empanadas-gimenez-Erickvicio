@@ -37,12 +37,13 @@ object galvan {
         }
 
     method pagarDeuda() {
-      
+
             var diferencia = self.deuda().max(self.dinero()) - self.deuda().min(self.dinero())
 
             
-            if( self.deuda() > self.dinero()) { self.deuda(diferencia) self.dinero(0) }
-            else                                self.deuda(0)          self.dinero(diferencia)
+            if      ( self.deuda() > self.dinero())         { self.deuda(diferencia) self.dinero(0) }
+            else if ( self.deuda() == self.dinero() )       { self.deuda(0) self.dinero(0) }
+            else if ( self.deuda() < self.dinero() )        { self.deuda(0)          self.dinero(diferencia) }
             
             
             // 150 25 = 150 - 25 = 125 es el dinero restante de dinero
@@ -52,7 +53,7 @@ object galvan {
             //if(self.dinero() > self.deuda()) { self.dinero( diferencia )} else self.dinero(0)
        }
          
-// NO ESTARIA FUNCIONANDO PARA CASOS DONDE LA DEUDA SEA MAYOR AL PAGO
+// 
   
 }
 
