@@ -46,14 +46,14 @@ object galvan {
             else if ( self.deuda() < self.dinero() )        { self.deuda(0)          self.dinero(diferencia) }
             
             
-            // 150 25 = 150 - 25 = 125 es el dinero restante de dinero
+            
             
             
             //if(self.deuda() > self.dinero()) { self.deuda( self.deuda() - self.dinero() )} else self.deuda(0)
             //if(self.dinero() > self.deuda()) { self.dinero( diferencia )} else self.dinero(0)
        }
          
-// 
+
   
 }
 
