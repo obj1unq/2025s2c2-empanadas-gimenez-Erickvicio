@@ -13,7 +13,7 @@ object galvan {
 
     method cobrarSueldo() {
       self.totalCobrado(self.sueldo())
-      self.dinero(self.sueldo())
+      self.dinero(self.dinero() + self.sueldo())
       self.pagarDeuda()
 
 
