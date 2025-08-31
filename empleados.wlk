@@ -4,57 +4,48 @@
 object galvan {
 
     var sueldo = 15000
-    method sueldo() { return sueldo }
     method sueldo(_sueldo) { sueldo = _sueldo }
-
-    var totalCobrado = 0
-    method totalCobrado() { return totalCobrado}
-    method totalCobrado(_totalCobrado) { totalCobrado = _totalCobrado }
-
-    method cobrarSueldo() {
-      self.totalCobrado(self.sueldo())
-      self.dinero(self.sueldo())
-      self.pagarDeuda()
-
-
-    }
+    method sueldo() { return sueldo }
 
     var dinero = 0
     method dinero() { return dinero }
-    method dinero(_dinero) { dinero = _dinero }
 
     var deuda = 0
     method deuda() { return deuda }
-    method deuda(_deuda) { deuda = _deuda }
+    
+    method cobrarSueldo(){
+
+      dinero = dinero + sueldo
+      self.pagarDeuda()
+    }
+
+    method pagarDeuda() {
+      
+      if (dinero >= deuda){
+
+            dinero = dinero - deuda
+            deuda = 0
+        }
+        else
+        { 
+            deuda = deuda - dinero
+            dinero = 0
+        }
+    }
+
+    
     
     method gastar(cuanto) { 
 
-        var cantidadFinal = cuanto - self.dinero() 
-        
-        self.deuda(self.deuda() + cantidadFinal) 
-        self.dinero(0)                            
+      if (dinero >= cuanto){
+            dinero = dinero - cuanto
+            }
+        else{
+            deuda = deuda + (cuanto - dinero)
+            dinero = 0
+            }                            
 
-        }
-
-    method pagarDeuda() {
-
-            var diferencia = self.deuda().max(self.dinero()) - self.deuda().min(self.dinero())
-
-            
-            if      ( self.deuda() > self.dinero())         { self.deuda(diferencia) self.dinero(0) }
-            else if ( self.deuda() == self.dinero() )       { self.deuda(0) self.dinero(0) }
-            else if ( self.deuda() < self.dinero() )        { self.deuda(0)          self.dinero(diferencia) }
-            
-            
-            
-            
-            
-            //if(self.deuda() > self.dinero()) { self.deuda( self.deuda() - self.dinero() )} else self.deuda(0)
-            //if(self.dinero() > self.deuda()) { self.dinero( diferencia )} else self.dinero(0)
-       }
-         
-
-  
+      }
 }
 
 object baigorria {
