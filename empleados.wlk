@@ -5,7 +5,22 @@ object galvan {
 
     var sueldo = 15000
     method sueldo(_sueldo) { sueldo = _sueldo }
+<<<<<<< HEAD
     method sueldo() { return sueldo }
+=======
+
+    var totalCobrado = 0
+    method totalCobrado() { return totalCobrado}
+    method totalCobrado(_totalCobrado) { totalCobrado = _totalCobrado }
+
+    method cobrarSueldo() {
+      self.totalCobrado(self.sueldo())
+      self.dinero(self.dinero() + self.sueldo())
+      self.pagarDeuda()
+
+
+    }
+>>>>>>> ad42c246ca6e708f90bfbf6d3963d71f59a6287f
 
     var dinero = 0
     method dinero() { return dinero }
