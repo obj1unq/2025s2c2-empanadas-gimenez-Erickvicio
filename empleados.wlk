@@ -6,10 +6,14 @@ object galvan {
 
     var dinero = 0
     method dinero() { return dinero }
+    method dinero(_dinero) { dinero = _dinero }
+
 
     var deuda = 0
     method deuda() { return deuda }
-    
+    method deuda(_deuda) { deuda = _deuda }
+
+
     method cobrarSueldo(){
 
       dinero = dinero + sueldo
@@ -61,7 +65,7 @@ object baigorria {
     method sueldo() { return sueldoPorEmpanada * empanadasVendidas }
 
     method cobrarSueldo() {
-      self.totalCobrado(self.sueldo())
+      totalCobrado = self.sueldo()
     }
 
 }

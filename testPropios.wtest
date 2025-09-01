@@ -1,0 +1,112 @@
+import empleados.*
+
+// Arrange
+// Act
+// Assert
+
+describe "Probando la estructura de los Test en Wollok" {
+
+    test "gimenez tacaño" {
+      
+
+        gimenez.cambiarSueldo(0)        // Act
+        gimenez.pagarSueldo(baigorria)  // Act
+        gimenez.pagarSueldo(galvan)     // Act
+
+        assert.equals(300000, gimenez.fondo()) // Assert
+
+    }
+
+    test "gimenez generoso" {
+      
+        baigorria.vender(10000)         // Act
+        gimenez.cambiarSueldo(150000)   // Act
+
+        gimenez.pagarSueldo(baigorria)  // Act
+        gimenez.pagarSueldo(galvan)     // Act
+        
+        assert.equals(0, gimenez.fondo())   // Assert
+
+    }
+
+
+test "Galvan lo gasta todo" {
+  
+    galvan.gastar(15000)        // Act
+    gimenez.pagarSueldo(galvan) // Act
+
+    assert.equals(0, galvan.deuda())    // Assert
+    assert.equals(0, galvan.dinero())   // Assert
+
+}
+
+test "galvan no gasta nada" {
+
+    galvan.gastar(0)        // Act
+    gimenez.pagarSueldo(galvan) // Act
+
+    assert.equals(0, galvan.deuda())    // Assert
+    assert.equals(15000, galvan.dinero())   // Assert
+}
+
+test "Galvan gasta de mas" {
+  
+    galvan.gastar(30000)        // Act
+    gimenez.pagarSueldo(galvan) // Act
+
+    assert.equals(15000, galvan.deuda()) // Assert
+    assert.equals(0, galvan.dinero())    // Assert
+
+}
+
+  test "Galvan se endeuda comprando silksong" {
+    
+    galvan.gastar(32912)            // Act
+    gimenez.pagarSueldo(galvan)     // Act
+
+    assert.equals(17912, galvan.deuda()) // Assert
+
+    gimenez.pagarSueldo(galvan)     // Act
+
+    assert.equals(2912, galvan.deuda()) // Assert
+
+    gimenez.pagarSueldo(galvan)     // Act
+
+    assert.equals(0, galvan.deuda())        // Assert
+    assert.equals(12088, galvan.dinero())   // Assert
+
+  }
+
+const gas = 85000
+const luz = 100000
+const agua = 32000
+const alquiler = 600000
+
+test "Galvan es prof y no llega a fin de mes" {
+  
+    /* Salario Cargo Simple Titular Docente con 24 años de antiguedad -->  730.195
+    Gas -> 85 000,
+    Luz -> 100 000,
+    Agua -> 31 927
+     */
+    
+    galvan.sueldo(730195) // Arrange
+
+    gimenez.pagarSueldo(galvan) // Act
+
+    // Servicios basicos
+    galvan.gastar(gas)          // Act
+    galvan.gastar(luz)          // Act
+    galvan.gastar(agua)         // Act
+    galvan.gastar(alquiler)     // Act
+
+    assert.equals(86805, galvan.deuda())    // Assert
+    assert.equals(0, galvan.dinero())       // Assert
+
+}
+
+
+
+}
+
+
